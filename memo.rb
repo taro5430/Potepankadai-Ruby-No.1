@@ -10,17 +10,21 @@ if memo_type == "1"
 
   puts "メモしたい内容を記入してください"
   puts "完了したらCtrl + Dをおします"
-  memo_content = gets.chomp.to_s
+  memo_content = $stdin.read.chomp
 
   CSV.open("#{file_name}.csv","w") do |csv|
     csv << ["#{memo_content}"]
   end
 
 elsif memo_type == "2"
+  puts "編集するファイルを拡張子を除いて入力してください"
+  edit_file_name = gets.chomp.to_s
+  
   puts "編集内容を入力してください"
-  edit_content = gets.chomp.to_s
+  puts "完了したらCtrl + Dをおします"
+  edit_content = $stdin.read.chomp
 
-  CSV.open("test.csv","w") do |csv|
+  CSV.open("#{edit_file_name}.csv","w") do |csv|
     csv << ["#{edit_content}"]
   end 
 
